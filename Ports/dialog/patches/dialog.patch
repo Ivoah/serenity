@@ -1,0 +1,26 @@
+diff -Naur src/Makefile ../dialog-0j03_0_37.serenity/src/Makefile
+--- src/Makefile	2020-04-16 16:38:39.000000000 -0400
++++ ../dialog-0j03_0_37.serenity/src/Makefile	2020-04-19 01:47:09.000000000 -0400
+@@ -12,8 +12,9 @@
+ 			rm -f dialogc dgdebug dialogc.exe dgdebug.exe *.o
+ 
+ install:		dialogc dgdebug
+-			cp dialogc /usr/local/bin/
+-			cp dgdebug /usr/local/bin/
++			mkdir -p $(DESTDIR)/usr/local/bin/
++			cp dialogc $(DESTDIR)/usr/local/bin/
++			cp dgdebug $(DESTDIR)/usr/local/bin/
+ 
+ .PHONY:			all clean install dialogc.exe dgdebug.exe
+ 
+diff -Naur src/debugger.c ../dialog-0j03_0_37.serenity/src/debugger.c
+--- src/debugger.c	2020-04-16 16:38:39.000000000 -0400
++++ ../dialog-0j03_0_37.serenity/src/debugger.c	2020-04-19 01:46:50.000000000 -0400
+@@ -6,6 +6,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <time.h>
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ #include <sys/types.h>
